@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprar | Pietro Camargo</title>
+    <link rel="stylesheet" href="CSS/comprar.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo Pietro Camargo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="comprar.html">Comprar</a></li>
+                <li><a href="duvidas.html">Dúvidas</a></li>
+                <li><a href="projetos.html">Projetos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="purchase">
+        <h2>Comprar Músicas</h2>
+        <p>Escolha a música que deseja comprar. Preencha o formulário para personalizar a sua música!</p>
+        
+        <div class="music-list">
+            <div class="music-item">
+                <h3>Música 1</h3>
+                <p>Descrição da música 1.</p>
+                <a href="#" class="btn-purchase">Comprar Agora</a>
+            </div>
+            <div class="music-item">
+                <h3>Música 2</h3>
+                <p>Descrição da música 2.</p>
+                <a href="#" class="btn-purchase">Comprar Agora</a>
+            </div>
+            <div class="music-item">
+                <h3>Música 3</h3>
+                <p>Descrição da música 3.</p>
+                <a href="#" class="btn-purchase">Comprar Agora</a>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h3>Formulário de Personalização</h3>
+            <form id="formulario" action="https://formsubmit.co/pietro.camargo.produtor@gmail.com" method="POST" onsubmit="return false;">
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required placeholder="Digite seu nome completo">
+                
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required placeholder="Digite seu e-mail">
+                
+                <label for="descricao">O que você quer na música?</label>
+                <textarea id="descricao" name="descricao" required placeholder="Fale um pouco sobre o que você deseja (ex: gênero, estilo, etc.)"></textarea>
+
+                <button type="button" class="btn-submit" onclick="mostrarConfirmacao()">Enviar Formulário</button>
+            </form>
+        </div>
+    </section>
+
+    <div id="confirmacao" class="confirmacao" style="display: none;">
+        <h3>Confirme os Dados:</h3>
+        <p><strong>Nome Completo:</strong> <span id="confirmarNome"></span></p>
+        <p><strong>E-mail:</strong> <span id="confirmarEmail"></span></p>
+        <p><strong>Descrição:</strong> <span id="confirmarDescricao"></span></p>
+
+        <p>Por favor, leia e aceite os termos abaixo:</p>
+        <p><em>Nosso conteúdo é feito com inteligência artificial. Você está clicando nesse botão para aceitar os termos.</em></p>
+
+        <label>
+            <input type="checkbox" id="termos" required> Aceito os termos e condições
+        </label>
+
+        <button id="btnEnviar" class="btn-submit" onclick="enviarFormulario()">Confirmar e Enviar</button>
+        <button class="btn-cancelar" onclick="cancelarConfirmacao()">Cancelar</button>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Pietro Camargo. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function mostrarConfirmacao() {
+            var nome = document.getElementById('nome').value;
+            var email = document.getElementById('email').value;
+            var descricao = document.getElementById('descricao').value;
+
+            document.getElementById('confirmarNome').textContent = nome;
+            document.getElementById('confirmarEmail').textContent = email;
+            document.getElementById('confirmarDescricao').textContent = descricao;
+
+            document.getElementById('confirmacao').style.display = 'block';
+
+            // Rolagem suave para a seção de confirmação
+            window.scrollTo({
+                top: document.getElementById('confirmacao').offsetTop - 100,
+                behavior: 'smooth'
+            });
+        }
+
+        function cancelarConfirmacao() {
+            document.getElementById('confirmacao').style.display = 'none';
+        }
+
+        function enviarFormulario() {
+            var termos = document.getElementById('termos').checked;
+            if (termos) {
+                document.getElementById('formulario').submit();
+            } else {
+                alert('Você deve aceitar os termos para continuar.');
+            }
+        }
+    </script>
+</body>
+</html>
