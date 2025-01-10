@@ -7,10 +7,20 @@
     <link rel="stylesheet" href="./css/index.css"/>
 </head>
 <body>
+    <!-- Modal que cobre a tela inteira -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <h2>ESTAMOS EM DESENVOLVIMENTO!! Pode aver bugs ou algo do tipo.</h2>
+            <p>Este site ainda está sendo desenvolvido. Obrigado pela paciência!</p>
+            <button id="closeModal">Ok</button>
+        </div>
+    </div>
+
+    <!-- Página principal -->
     <div id="loading" class="loading">
         <div class="loader"></div>
     </div>
-    
+
     <header>
         <div class="logo">
             <img src="img/logo.png" alt="Logo Pietro Camargo">
@@ -38,8 +48,18 @@
     </footer>
 
     <script>
+        // Mostrar modal ao carregar a página
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById('modal');
+            const closeModal = document.getElementById('closeModal');
+
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+        });
+
+        // Ocultar carregamento ao finalizar o carregamento da página
         window.onload = function() {
-            // Remove o carregamento quando o conteúdo estiver completamente carregado
             document.getElementById('loading').style.display = 'none';
         }
     </script>
