@@ -24,27 +24,75 @@
     <section class="projects">
         <h2>Meus Projetos Musicais</h2>
         <p>Veja o que já fiz e os trabalhos que estou realizando para você.</p>
+
+        <!-- Categoria Hip-Hop/Trap -->
+        <h3>Categoria: Hip-Hop/Trap</h3>
         <div class="projects-gallery">
             <div class="project">
-                <h3>Projeto 1</h3>
+                <h4>Projeto 1: Música CWB</h4>
                 <p>Descrição do projeto 1.</p>
-                <a href="#" class="btn-view">Ver mais</a>
+                <button class="btn-view" onclick="selectMusic('musica/cwb.mp3', 'Música CWB')">Selecionar</button>
             </div>
             <div class="project">
-                <h3>Projeto 2</h3>
+                <h4>Projeto 2: Música Luta Diária</h4>
                 <p>Descrição do projeto 2.</p>
-                <a href="#" class="btn-view">Ver mais</a>
+                <button class="btn-view" onclick="selectMusic('musica/luta_diaria.mp3', 'Música Luta Diária')">Selecionar</button>
             </div>
             <div class="project">
-                <h3>Projeto 3</h3>
+                <h4>Projeto 3: Música Quem Me Julgou</h4>
                 <p>Descrição do projeto 3.</p>
-                <a href="#" class="btn-view">Ver mais</a>
+                <button class="btn-view" onclick="selectMusic('musica/quem_me_julgou.mp3', 'Música Quem Me Julgou')">Selecionar</button>
             </div>
+        </div>
+
+        <!-- Categoria Eletrônica -->
+        <h3>Categoria: Eletrônica</h3>
+        <div class="projects-gallery">
+            <div class="project">
+                <h4>Projeto 4: Música Universo</h4>
+                <p>Descrição do projeto de música eletrônica.</p>
+                <button class="btn-view" onclick="selectMusic('musica/universo.mp3', 'Música Universo')">Selecionar</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="audio-player">
+        <h2 id="current-music">Nenhuma música selecionada</h2>
+        <audio id="audioPlayer" controls>
+            <source id="audioSource" src="" type="audio/mp3">
+            Seu navegador não suporta o formato de áudio.
+        </audio>
+        <div>
+            <button onclick="playAudio()">Tocar</button>
+            <button onclick="pauseAudio()">Pausar</button>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2025 Pietro Camargo. Todos os direitos reservados.</p>
     </footer>
+
+    <script>
+        const audioPlayer = document.getElementById("audioPlayer");
+        const audioSource = document.getElementById("audioSource");
+        const currentMusic = document.getElementById("current-music");
+
+        // Seleciona a música para tocar
+        function selectMusic(src, name) {
+            audioSource.src = src;
+            audioPlayer.load(); // Recarrega o player com a nova música
+            currentMusic.textContent = name;
+        }
+
+        // Toca a música
+        function playAudio() {
+            audioPlayer.play();
+        }
+
+        // Pausa a música
+        function pauseAudio() {
+            audioPlayer.pause();
+        }
+    </script>
 </body>
 </html>
